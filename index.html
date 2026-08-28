@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bloom Wellness — Your sanctuary for growth</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('bloom-theme');
+        var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Bloom Wellness — personalized women's health, cycle tracking, mood logging, and AI-guided therapy in your pocket." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Serif:wght@500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "rgb(var(--primary) / <alpha-value>)",
+            "on-primary": "rgb(var(--on-primary) / <alpha-value>)",
+            "primary-container": "rgb(var(--primary-container) / <alpha-value>)",
+            "on-primary-container": "rgb(var(--on-primary-container) / <alpha-value>)",
+            "primary-fixed": "rgb(var(--primary-fixed) / <alpha-value>)",
+            "primary-fixed-dim": "rgb(var(--primary-fixed-dim) / <alpha-value>)",
+            "inverse-primary": "rgb(var(--inverse-primary) / <alpha-value>)",
+            "secondary": "rgb(var(--secondary) / <alpha-value>)",
+            "on-secondary": "rgb(var(--on-secondary) / <alpha-value>)",
+            "secondary-container": "rgb(var(--secondary-container) / <alpha-value>)",
+            "on-secondary-container": "rgb(var(--on-secondary-container) / <alpha-value>)",
+            "secondary-fixed": "rgb(var(--secondary-fixed) / <alpha-value>)",
+            "secondary-fixed-dim": "rgb(var(--secondary-fixed-dim) / <alpha-value>)",
+            "on-secondary-fixed-variant": "rgb(var(--on-secondary-fixed-variant) / <alpha-value>)",
+            "tertiary": "rgb(var(--tertiary) / <alpha-value>)",
+            "tertiary-container": "rgb(var(--tertiary-container) / <alpha-value>)",
+            "tertiary-fixed": "rgb(var(--tertiary-fixed) / <alpha-value>)",
+            "tertiary-fixed-dim": "rgb(var(--tertiary-fixed-dim) / <alpha-value>)",
+            "background": "rgb(var(--background) / <alpha-value>)",
+            "on-background": "rgb(var(--on-background) / <alpha-value>)",
+            "surface": "rgb(var(--surface) / <alpha-value>)",
+            "on-surface": "rgb(var(--on-surface) / <alpha-value>)",
+            "on-surface-variant": "rgb(var(--on-surface-variant) / <alpha-value>)",
+            "surface-variant": "rgb(var(--surface-variant) / <alpha-value>)",
+            "surface-container": "rgb(var(--surface-container) / <alpha-value>)",
+            "surface-container-low": "rgb(var(--surface-container-low) / <alpha-value>)",
+            "surface-container-lowest": "rgb(var(--surface-container-lowest) / <alpha-value>)",
+            "surface-container-high": "rgb(var(--surface-container-high) / <alpha-value>)",
+            "surface-container-highest": "rgb(var(--surface-container-highest) / <alpha-value>)",
+            "outline": "rgb(var(--outline) / <alpha-value>)",
+            "outline-variant": "rgb(var(--outline-variant) / <alpha-value>)",
+            "error": "rgb(var(--error) / <alpha-value>)",
+            "error-container": "rgb(var(--error-container) / <alpha-value>)",
+            "warm-peach": "rgb(var(--warm-peach) / <alpha-value>)"
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "container-padding-mobile": "24px",
+            "container-padding-desktop": "64px",
+            "gutter": "20px",
+            "section-gap": "48px"
+          },
+          fontFamily: {
+            "display": ["Noto Serif"],
+            "body": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Noto Serif"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"]
+          },
+          fontSize: {
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["13px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="assets/bloom.css" />
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+<body class="font-body antialiased selection:bg-primary-container selection:text-on-primary-container">
+
+  <!-- Header (htmx partial) -->
+  <div hx-get="partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
+
+  <!-- Hero Section -->
+  <header class="relative pt-32 pb-24 md:pt-48 md:pb-40 px-6 md:px-16 overflow-hidden min-h-[90vh] flex items-center">
+    <!-- Background hero image -->
+    <div class="hero-bg absolute inset-0 z-0 opacity-40 mix-blend-multiply"
+         style="background-image: url('assets/hero.png'); background-size: cover; background-position: center;"></div>
+
+    <!-- Abstract organic blobs -->
+    <div class="absolute top-20 right-0 w-[40vw] h-[40vw] bg-primary-fixed rounded-full blur-3xl opacity-30 -z-10 mix-blend-multiply"></div>
+    <div class="absolute bottom-0 left-10 w-[50vw] h-[30vw] bg-secondary-fixed rounded-full blur-3xl opacity-30 -z-10 mix-blend-multiply"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-12 gap-5 items-center w-full">
+      <div class="md:col-span-8 lg:col-span-7 flex flex-col items-start space-y-8">
+        <span class="inline-block px-4 py-2 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm">
+          Discover Your Calm
+        </span>
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
+          Your sanctuary for growth
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+          Personalized women's health, cycle tracking, and AI-guided therapy in your pocket. Cultivate resilience with daily check-ins, mindful reflections, and expert resources.
+        </p>
+        <div class="flex flex-wrap gap-4 pt-4">
+          <a href="index.html#get-started"
+             class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-sm text-label-sm hover:bg-primary/90 transition-colors shadow-[0_0_12px_rgba(101,89,116,0.5)] flex items-center gap-2">
+            Get Started Free
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+          </a>
+          <a href="features.html"
+             class="bg-surface-container-lowest border border-outline-variant text-primary px-8 py-4 rounded-full font-label-sm text-label-sm hover:bg-surface-variant transition-colors flex items-center gap-2">
+            Explore Features
+          </a>
+        </div>
+      </div>
+
+      <div class="hidden md:flex md:col-span-4 lg:col-span-5 justify-center relative">
+        <div class="relative w-full max-w-sm aspect-[4/5] glass-panel blob-shape-1 p-8 flex flex-col justify-between ambient-glow-primary">
+          <div class="flex justify-between items-start">
+            <div class="bg-surface-container-lowest p-3 rounded-full shadow-sm">
+              <span class="material-symbols-outlined text-secondary text-2xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="h-2 w-1/3 bg-primary/20 rounded-full"></div>
+            <div class="h-2 w-2/3 bg-primary/20 rounded-full"></div>
+            <div class="h-12 w-full bg-surface-container-lowest/80 rounded-xl mt-4"></div>
+          </div>
+        </div>
+        <div class="absolute -bottom-10 -left-10 w-24 h-24 bg-surface-container-lowest rounded-full shadow-lg p-4 flex items-center justify-center animate-float-soft">
+          <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- How it Works Section -->
+  <section class="py-12 px-6 md:px-16 bg-surface-container-lowest relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 space-y-4">
+        <h2 class="font-headline-md text-headline-md text-on-surface">The Journey to Bloom</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">A simple, nurturing process designed to integrate seamlessly into your daily routine.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="flex flex-col items-center text-center p-8 rounded-2xl bg-surface hover:bg-surface-container transition-colors duration-300 group">
+          <div class="w-20 h-20 rounded-full bg-primary-fixed flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">mood</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md text-on-surface mb-3">1. Check-in</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Log your daily emotional state and cycle symptoms with our intuitive tracker to identify patterns over time.</p>
+        </div>
+        <div class="flex flex-col items-center text-center p-8 rounded-2xl bg-surface hover:bg-surface-container transition-colors duration-300 group relative">
+          <div class="hidden md:block absolute top-1/4 -left-10 w-10 border-t-2 border-dashed border-outline-variant"></div>
+          <div class="w-20 h-20 rounded-full bg-secondary-fixed flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md text-on-surface mb-3">2. Reflect</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Engage in guided journaling prompts tailored to your current mood and cycle phase to process your thoughts.</p>
+          <div class="hidden md:block absolute top-1/4 -right-10 w-10 border-t-2 border-dashed border-outline-variant"></div>
+        </div>
+        <div class="flex flex-col items-center text-center p-8 rounded-2xl bg-surface hover:bg-surface-container transition-colors duration-300 group">
+          <div class="w-20 h-20 rounded-full bg-inverse-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">psychiatry</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md text-on-surface mb-3">3. Bloom</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Access personalized insights and actionable steps to cultivate long-term mental and physical resilience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Features Bento Grid -->
+  <section class="py-12 px-6 md:px-16 bg-surface relative overflow-hidden">
+    <div class="absolute top-0 right-1/4 w-[60vw] h-[60vw] bg-primary-fixed/40 rounded-full blur-3xl opacity-50 -z-10 mix-blend-multiply pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12">
+        <h2 class="font-headline-md text-headline-md text-on-surface">Comprehensive Care</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">Tools designed to support every facet of your well-being.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+        <!-- Feature 1: AI Mood Tracking (8 cols) -->
+        <div class="md:col-span-8 bg-surface-container-lowest rounded-2xl p-8 shadow-sm ambient-glow-primary border border-outline-variant/30 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden group">
+          <div class="flex-1 space-y-4 relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-fixed rounded-full">
+              <span class="material-symbols-outlined text-primary text-sm">trending_up</span>
+              <span class="font-label-sm text-label-sm text-primary">Real-time Analysis</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-on-surface">AI Mood Tracking</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant">Our advanced sentiment analysis helps you understand the nuances of your emotional landscape, identifying subtle shifts before they become overwhelming.</p>
+            <a href="mood-tracking.html" class="inline-flex items-center gap-2 font-label-sm text-label-sm text-primary hover:opacity-80 transition-opacity">
+              Explore Mood Tracking <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+          </div>
+          <div class="w-full md:w-1/2 aspect-video bg-surface-container rounded-lg flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary-fixed to-secondary-fixed opacity-50"></div>
+            <svg class="w-full h-full text-primary opacity-20 absolute" preserveAspectRatio="none" viewBox="0 0 100 100">
+              <path d="M0,100 L0,50 Q25,20 50,60 T100,30 L100,100 Z" fill="currentColor"></path>
+            </svg>
+          </div>
+        </div>
+        <!-- Feature 2: Digital Therapist (4 cols) -->
+        <div class="md:col-span-4 bg-primary text-on-primary rounded-2xl p-8 shadow-sm flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute -right-4 -top-4 w-32 h-32 bg-white/10 rounded-full blur-xl transition-transform group-hover:scale-150 duration-500"></div>
+          <div class="space-y-4 relative z-10">
+            <span class="material-symbols-outlined text-4xl mb-2" style="font-variation-settings: 'FILL' 1;">forum</span>
+            <h3 class="font-headline-md text-headline-md">Digital Therapist</h3>
+            <p class="font-body-md text-body-md text-on-primary/80">Access 24/7 CBT-based support whenever you need a listening ear or structured guidance through difficult moments.</p>
+          </div>
+          <a href="therapy.html" class="mt-8 text-left font-label-sm text-label-sm flex items-center gap-2 hover:opacity-80 transition-opacity">
+            Explore Sessions <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+        <!-- Feature 3: Resource Library (12 cols) -->
+        <div class="md:col-span-12 bg-surface-container-highest rounded-2xl p-8 shadow-sm border border-outline-variant/20 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden">
+          <div class="w-full md:w-1/3 space-y-4">
+            <span class="material-symbols-outlined text-secondary text-4xl" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+            <h3 class="font-headline-md text-headline-md text-on-surface">Resource Library</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant">Immerse yourself in a curated collection of guided meditations, ambient soundscapes, and sleep stories designed to soothe the nervous system.</p>
+            <a href="resources.html" class="inline-flex items-center gap-2 font-label-sm text-label-sm text-secondary mt-2 hover:opacity-80 transition-opacity">
+              Browse Resources <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+          </div>
+          <div class="w-full md:w-2/3 grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col gap-3">
+              <div class="w-full aspect-square bg-secondary-fixed/50 rounded-md flex items-center justify-center">
+                <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">self_improvement</span>
+              </div>
+              <span class="font-label-sm text-label-sm text-on-surface truncate">Morning Clarity</span>
+            </div>
+            <div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm flex flex-col gap-3">
+              <div class="w-full aspect-square bg-primary-fixed/50 rounded-md flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">nights_stay</span>
+              </div>
+              <span class="font-label-sm text-label-sm text-on-surface truncate">Deep Sleep Story</span>
+            </div>
+            <div class="hidden md:flex bg-surface-container-lowest p-4 rounded-lg shadow-sm flex-col gap-3">
+              <div class="w-full aspect-square bg-tertiary-fixed/50 rounded-md flex items-center justify-center">
+                <span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">waves</span>
+              </div>
+              <span class="font-label-sm text-label-sm text-on-surface truncate">Anxiety Relief Breath</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="py-12 px-6 md:px-16 bg-surface-container-lowest">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass-panel rounded-2xl p-10 md:p-16 text-center relative ambient-glow-primary border border-primary-fixed-dim">
+        <span class="material-symbols-outlined text-primary-fixed-dim text-6xl absolute top-8 left-8 opacity-50" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+        <p class="font-display text-display-lg-mobile md:text-headline-md text-on-surface relative z-10 mb-8 leading-relaxed">
+          "Bloom Wellness has been a revelation. The gentle check-ins and the AI therapist feel incredibly supportive, not clinical. It's truly given me a profound sense of peace of mind."
+        </p>
+        <div class="flex items-center justify-center gap-4">
+          <div class="w-12 h-12 bg-surface-variant rounded-full overflow-hidden border-2 border-surface-container-lowest">
+            <span class="material-symbols-outlined text-primary text-2xl w-full h-full flex items-center justify-center">person</span>
+          </div>
+          <div class="text-left">
+            <p class="font-label-sm text-label-sm text-on-surface">Sarah J.</p>
+            <p class="font-body-md text-body-md text-on-surface-variant text-sm">Member since 2023</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section id="get-started" class="py-12 px-6 md:px-16 bg-primary-fixed">
+    <div class="max-w-3xl mx-auto text-center space-y-8">
+      <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-surface">Start Your Journey Today</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant">Join thousands who have found their sanctuary. Download the app and take the first step towards a calmer, more resilient you.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+        <a href="#" class="bg-on-surface text-surface-container-lowest px-8 py-4 rounded-xl font-label-sm text-label-sm hover:bg-on-surface/90 transition-colors flex items-center justify-center gap-3">
+          <span class="material-symbols-outlined">file_download</span>
+          App Store
+        </a>
+        <a href="#" class="bg-surface-container-lowest text-on-surface px-8 py-4 rounded-xl font-label-sm text-label-sm hover:bg-surface transition-colors flex items-center justify-center gap-3 border border-outline-variant">
+          <span class="material-symbols-outlined">android</span>
+          Play Store
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (htmx partial) -->
+  <div hx-get="partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
+
+  <script>
+    // Mobile menu toggle
+    document.addEventListener('click', function (e) {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+      if (btn.contains(e.target)) {
+        menu.classList.toggle('hidden');
+      } else if (!menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

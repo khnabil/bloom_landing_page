@@ -1,0 +1,212 @@
+/* ============================================================
+   Bloom Wellness — shared design system
+   Organic Minimalism: lavender / sage / cream palette
+   Light + Dark themes via CSS custom properties.
+   ============================================================ */
+
+/* --- Light theme tokens (default) --- */
+:root {
+  --primary: 101 89 116;            /* #655974 lavender */
+  --on-primary: 255 255 255;
+  --primary-container: 167 153 183; /* #a799b7 */
+  --on-primary-container: 60 49 74;
+  --primary-fixed: 236 220 253;     /* #ecdcfd */
+  --primary-fixed-dim: 208 193 224; /* #d0c1e0 */
+  --inverse-primary: 208 193 224;
+  --secondary: 74 101 79;           /* #4a654f sage */
+  --on-secondary: 255 255 255;
+  --secondary-container: 201 231 196;
+  --on-secondary-container: 78 105 83;
+  --secondary-fixed: 204 234 207;   /* #cceacf */
+  --secondary-fixed-dim: 176 206 180;
+  --on-secondary-fixed-variant: 51 77 56;
+  --tertiary: 94 94 92;
+  --tertiary-container: 160 159 155;
+  --tertiary-fixed: 228 226 222;
+  --tertiary-fixed-dim: 200 198 195;
+  --background: 244 250 255;        /* #f4faff cream */
+  --on-background: 14 29 37;        /* #0e1d25 slate */
+  --surface: 244 250 255;
+  --on-surface: 14 29 37;
+  --on-surface-variant: 73 69 76;
+  --surface-variant: 213 229 239;
+  --surface-container: 224 240 251;
+  --surface-container-low: 231 246 255;
+  --surface-container-lowest: 255 255 255;
+  --surface-container-high: 218 235 245;
+  --surface-container-highest: 213 229 239;
+  --outline: 122 117 125;
+  --outline-variant: 203 196 205;
+  --error: 186 26 26;
+  --error-container: 255 218 214;
+  --warm-peach: 249 177 152;
+}
+
+/* --- Dark theme tokens --- */
+.dark {
+  --primary: 208 193 224;           /* light lavender */
+  --on-primary: 60 49 74;
+  --primary-container: 101 89 116;
+  --on-primary-container: 236 220 253;
+  --primary-fixed: 236 220 253;
+  --primary-fixed-dim: 208 193 224;
+  --inverse-primary: 101 89 116;
+  --secondary: 176 206 180;
+  --on-secondary: 51 77 56;
+  --secondary-container: 74 101 79;
+  --on-secondary-container: 201 231 196;
+  --secondary-fixed: 201 234 202;
+  --secondary-fixed-dim: 176 206 180;
+  --on-secondary-fixed-variant: 51 77 56;
+  --tertiary: 200 198 195;
+  --tertiary-container: 94 94 92;
+  --tertiary-fixed: 228 226 222;
+  --tertiary-fixed-dim: 200 198 195;
+  --background: 15 23 37;            /* deep slate */
+  --on-background: 227 243 253;
+  --surface: 15 23 37;
+  --on-surface: 227 243 253;
+  --on-surface-variant: 203 196 205;
+  --surface-variant: 58 74 84;
+  --surface-container: 26 42 51;
+  --surface-container-low: 22 38 47;
+  --surface-container-lowest: 10 23 29;
+  --surface-container-high: 33 48 57;
+  --surface-container-highest: 44 58 63;
+  --outline: 143 138 146;
+  --outline-variant: 69 65 76;
+  --error: 255 180 171;
+  --error-container: 147 0 10;
+  --warm-peach: 249 177 152;
+}
+
+body {
+  background-color: rgb(var(--background));
+  color: rgb(var(--on-background));
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background-color: rgb(var(--primary-container));
+  color: rgb(var(--on-primary-container));
+}
+
+/* --- Organic blob shapes --- */
+.blob-shape-1 { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+.blob-shape-2 { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+.blob-shape-3 { border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%; }
+
+/* --- Glassmorphism panel --- */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.dark .glass-panel {
+  background: rgba(22, 38, 47, 0.6);
+  border: 1px solid rgba(203, 196, 205, 0.2);
+}
+
+.glass-nav {
+  background: rgba(244, 250, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(203, 196, 205, 0.35);
+}
+.dark .glass-nav {
+  background: rgba(15, 23, 37, 0.7);
+  border-bottom: 1px solid rgba(203, 196, 205, 0.15);
+}
+
+/* --- Ambient glows (soft light instead of hard shadows) --- */
+.ambient-glow-primary {
+  box-shadow: 0 0 40px rgba(101, 89, 116, 0.1);
+}
+.ambient-glow-secondary {
+  box-shadow: 0 0 40px rgba(74, 101, 79, 0.1);
+}
+.ambient-glow-peach {
+  box-shadow: 0 0 40px rgba(249, 177, 152, 0.25);
+}
+
+/* --- Neumorphic-lite (matches the Bloom app's tactile depth) --- */
+.neumorphic-card {
+  background-color: rgb(var(--surface));
+  border-radius: 24px;
+  box-shadow: 4px 4px 10px 0px rgba(217, 215, 208, 0.1),
+              -4px -4px 10px 0px rgba(255, 255, 255, 1);
+}
+.dark .neumorphic-card {
+  background-color: rgb(var(--surface-container));
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.4),
+              -4px -4px 10px 0px rgba(255, 255, 255, 0.05);
+}
+
+.neumorphic-input {
+  background-color: rgb(var(--surface));
+  box-shadow: inset 4px 4px 8px 0px rgba(217, 215, 208, 0.15),
+              inset -4px -4px 8px 0px rgba(255, 255, 255, 0.8);
+  border: none;
+}
+.neumorphic-input:focus {
+  outline: none;
+  box-shadow: inset 6px 6px 12px 0px rgba(217, 215, 208, 0.2),
+              inset -6px -6px 12px 0px rgba(255, 255, 255, 0.9);
+}
+.dark .neumorphic-input {
+  background-color: rgb(var(--surface-container));
+  box-shadow: inset 4px 4px 8px 0px rgba(0, 0, 0, 0.4),
+              inset -4px -4px 8px 0px rgba(255, 255, 255, 0.05);
+}
+.dark .neumorphic-input:focus {
+  box-shadow: inset 6px 6px 12px 0px rgba(0, 0, 0, 0.5),
+              inset -6px -6px 12px 0px rgba(255, 255, 255, 0.08);
+}
+
+/* --- Hero background image (dark mode: screen blend keeps it visible) --- */
+.hero-bg {
+  transition: opacity 0.3s ease;
+}
+.dark .hero-bg {
+  mix-blend-mode: screen;
+  opacity: 0.25;
+}
+
+/* --- Soft floating animation for decorative elements --- */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* --- htmx transitions --- */
+.htmx-swapping {
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+.htmx-added {
+  opacity: 0;
+}
+.htmx-settling {
+  transition: opacity 0.2s ease-out;
+}
+
+/* --- Scrollbar (subtle, on-brand) --- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: rgb(var(--surface-container-low)); }
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--primary-container));
+  border-radius: 9999px;
+  border: 2px solid rgb(var(--surface-container-low));
+}

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Features — Bloom Wellness</title>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('bloom-theme');
+        var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Bloom Wellness — personalized women's health, cycle tracking, mood logging, and AI-guided therapy in your pocket." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Serif:wght@500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "rgb(var(--primary) / <alpha-value>)",
+            "on-primary": "rgb(var(--on-primary) / <alpha-value>)",
+            "primary-container": "rgb(var(--primary-container) / <alpha-value>)",
+            "on-primary-container": "rgb(var(--on-primary-container) / <alpha-value>)",
+            "primary-fixed": "rgb(var(--primary-fixed) / <alpha-value>)",
+            "primary-fixed-dim": "rgb(var(--primary-fixed-dim) / <alpha-value>)",
+            "inverse-primary": "rgb(var(--inverse-primary) / <alpha-value>)",
+            "secondary": "rgb(var(--secondary) / <alpha-value>)",
+            "on-secondary": "rgb(var(--on-secondary) / <alpha-value>)",
+            "secondary-container": "rgb(var(--secondary-container) / <alpha-value>)",
+            "on-secondary-container": "rgb(var(--on-secondary-container) / <alpha-value>)",
+            "secondary-fixed": "rgb(var(--secondary-fixed) / <alpha-value>)",
+            "secondary-fixed-dim": "rgb(var(--secondary-fixed-dim) / <alpha-value>)",
+            "on-secondary-fixed-variant": "rgb(var(--on-secondary-fixed-variant) / <alpha-value>)",
+            "tertiary": "rgb(var(--tertiary) / <alpha-value>)",
+            "tertiary-container": "rgb(var(--tertiary-container) / <alpha-value>)",
+            "tertiary-fixed": "rgb(var(--tertiary-fixed) / <alpha-value>)",
+            "tertiary-fixed-dim": "rgb(var(--tertiary-fixed-dim) / <alpha-value>)",
+            "background": "rgb(var(--background) / <alpha-value>)",
+            "on-background": "rgb(var(--on-background) / <alpha-value>)",
+            "surface": "rgb(var(--surface) / <alpha-value>)",
+            "on-surface": "rgb(var(--on-surface) / <alpha-value>)",
+            "on-surface-variant": "rgb(var(--on-surface-variant) / <alpha-value>)",
+            "surface-variant": "rgb(var(--surface-variant) / <alpha-value>)",
+            "surface-container": "rgb(var(--surface-container) / <alpha-value>)",
+            "surface-container-low": "rgb(var(--surface-container-low) / <alpha-value>)",
+            "surface-container-lowest": "rgb(var(--surface-container-lowest) / <alpha-value>)",
+            "surface-container-high": "rgb(var(--surface-container-high) / <alpha-value>)",
+            "surface-container-highest": "rgb(var(--surface-container-highest) / <alpha-value>)",
+            "outline": "rgb(var(--outline) / <alpha-value>)",
+            "outline-variant": "rgb(var(--outline-variant) / <alpha-value>)",
+            "error": "rgb(var(--error) / <alpha-value>)",
+            "error-container": "rgb(var(--error-container) / <alpha-value>)",
+            "warm-peach": "rgb(var(--warm-peach) / <alpha-value>)"
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "container-padding-mobile": "24px",
+            "container-padding-desktop": "64px",
+            "gutter": "20px",
+            "section-gap": "48px"
+          },
+          fontFamily: {
+            "display": ["Noto Serif"],
+            "body": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Noto Serif"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"]
+          },
+          fontSize: {
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-sm": ["13px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="assets/bloom.css" />
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+<body class="font-body antialiased selection:bg-primary-container selection:text-on-primary-container">
+
+  <div hx-get="partials/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
+
+  <!-- Page Hero -->
+  <section class="relative pt-36 pb-16 md:pt-44 md:pb-20 px-6 md:px-16 overflow-hidden">
+    <div class="absolute top-10 right-0 w-[35vw] h-[35vw] bg-primary-fixed rounded-full blur-3xl opacity-30 -z-10 mix-blend-multiply"></div>
+    <div class="absolute bottom-0 left-0 w-[40vw] h-[25vw] bg-secondary-fixed rounded-full blur-3xl opacity-30 -z-10 mix-blend-multiply"></div>
+    <div class="max-w-7xl mx-auto text-center space-y-6">
+      <span class="inline-block px-4 py-2 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm">Everything in one place</span>
+      <h1 class="font-display text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">Features built around you</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+        From cycle tracking to AI-guided wellness plans, Bloom brings together every tool you need to understand your body and nurture your mind.
+      </p>
+    </div>
+  </section>
+
+  <!-- Feature Grid -->
+  <section class="py-12 px-6 md:px-16 bg-surface-container-lowest">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Cycle Tracking -->
+      <div class="neumorphic-card p-8 flex flex-col gap-4 group hover:-translate-y-1 transition-transform duration-300">
+        <div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+        </div>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Cycle Tracking</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Log your period, track your cycle length, and get phase-aware predictions. Bloom identifies your current phase — follicular, ovulatory, luteal, or menstrual — and adapts guidance to how you feel.</p>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-3 py-1 bg-secondary-fixed rounded-full font-label-sm text-label-sm text-on-secondary-fixed-variant">Phase prediction</span>
+          <span class="px-3 py-1 bg-primary-fixed rounded-full font-label-sm text-label-sm text-primary">Cycle length stats</span>
+        </div>
+      </div>
+
+      <!-- Mood & Symptom Logging -->
+      <div class="neumorphic-card p-8 flex flex-col gap-4 group hover:-translate-y-1 transition-transform duration-300">
+        <div class="flex w-16 h-16 rounded-full bg-secondary-fixed items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">mood</span>
+        </div>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Mood &amp; Symptom Logging</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Quick daily check-ins capture your emotional state and physical symptoms like cramps, bloating, and fatigue. Over time, Bloom surfaces the patterns that matter to you.</p>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-3 py-1 bg-secondary-fixed rounded-full font-label-sm text-label-sm text-on-secondary-fixed-variant">Sentiment analysis</span>
+          <span class="px-3 py-1 bg-primary-fixed rounded-full font-label-sm text-label-sm text-primary">Pattern insights</span>
+        </div>
+      </div>
+
+      <!-- AI Diet & Fitness Plans -->
+      <div class="neumorphic-card p-8 flex flex-col gap-4 group hover:-translate-y-1 transition-transform duration-300">
+        <div class="flex w-16 h-16 rounded-full bg-primary-fixed items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+        </div>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Personalized Diet &amp; Fitness</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Tell Bloom about your goals and health profile, and our AI engine crafts localized diet and fitness plans tailored to your cycle phase and lifestyle.</p>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-3 py-1 bg-secondary-fixed rounded-full font-label-sm text-label-sm text-on-secondary-fixed-variant">Localized plans</span>
+          <span class="px-3 py-1 bg-primary-fixed rounded-full font-label-sm text-label-sm text-primary">Phase-aware</span>
+        </div>
+      </div>
+
+      <!-- AI Therapist -->
+      <div class="neumorphic-card p-8 flex flex-col gap-4 group hover:-translate-y-1 transition-transform duration-300">
+        <div class="flex w-16 h-16 rounded-full bg-inverse-primary items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">forum</span>
+        </div>
+        <h3 class="font-headline-md text-headline-md text-on-surface">AI Therapist</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">A 24/7 CBT-based companion ready to listen, reflect, and guide you through difficult moments with structured, evidence-based support.</p>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-3 py-1 bg-secondary-fixed rounded-full font-label-sm text-label-sm text-secondary">24/7 availability</span>
+          <span class="px-3 py-1 bg-primary-fixed rounded-full font-label-sm text-label-sm text-primary">CBT-based</span>
+        </div>
+      </div>
+
+      <!-- Community -->
+      <div class="neumorphic-card p-8 flex flex-col gap-4 group hover:-translate-y-1 transition-transform duration-300">
+        <div class="flex w-16 h-16 rounded-full bg-secondary-fixed items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">groups</span>
+        </div>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Community</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Connect with a supportive community of women on similar journeys. Share experiences, ask questions, and grow together in a safe, moderated space.</p>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-3 py-1 bg-secondary-fixed rounded-full font-label-sm text-label-sm text-secondary">Supportive space</span>
+          <span class="px-3 py-1 bg-primary-fixed rounded-full font-label-sm text-label-sm text-primary">Moderated</span>
+        </div>
+      </div>
+
+      <!-- Resource Library -->
+      <div class="neumorphic-card p-8 flex flex-col gap-4 group hover:-translate-y-1 transition-transform duration-300">
+        <div class="flex w-16 h-16 rounded-full bg-primary-fixed items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+        </div>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Resource Library</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">A curated collection of guided meditations, ambient soundscapes, sleep stories, and educational articles to soothe your nervous system and expand your knowledge.</p>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-3 py-1 bg-secondary-fixed rounded-full font-label-sm text-label-sm text-secondary">Meditations</span>
+          <span class="px-3 py-1 bg-primary-fixed rounded-full font-label-sm text-label-sm text-primary">Sleep stories</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-12 px-6 md:px-16 bg-primary-fixed">
+    <div class="max-w-3xl mx-auto text-center space-y-6">
+      <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-surface">Ready to feel at home in your body?</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant">Every feature in Bloom is designed to be gentle, personal, and empowering.</p>
+      <a href="index.html#get-started" class="inline-block bg-on-surface text-surface-container-lowest px-8 py-4 rounded-full font-label-sm text-label-sm hover:bg-on-surface/90 transition-colors">
+        Get Started Free
+      </a>
+    </div>
+  </section>
+
+  <div hx-get="partials/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
+
+  <script>
+    document.addEventListener('click', function (e) {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+      if (btn.contains(e.target)) menu.classList.toggle('hidden');
+      else if (!menu.contains(e.target)) menu.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
